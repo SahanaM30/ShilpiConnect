@@ -25,18 +25,33 @@
                 <label class="form-label">Full Name</label>
                 <input type="text" class="form-control" name="name" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Skill/Craft</label>
-                <select class="form-control" name="skill" required>
-                    <option value="">Select your craft</option>
-                    <option value="Pottery">Pottery</option>
-                    <option value="Weaving">Weaving</option>
-                    <option value="Wood Carving">Wood Carving</option>
-                    <option value="Painting">Painting</option>
-                    <option value="Metal Work">Metal Work</option>
-                    <option value="Other">Other</option>
-                </select>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Skill/Craft</label>
+                    <select class="form-control" name="skill" id="skillSelect" required onchange="toggleOtherSkill()">
+                        <option value="">Select your craft</option>
+                        <option value="Pottery">Pottery</option>
+                        <option value="Weaving">Weaving</option>
+                        <option value="Wood Carving">Wood Carving</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Metal Work">Metal Work</option>
+                        <option value="Stone Carving">Stone Carving</option>
+                        <option value="Bamboo Craft">Bamboo Craft</option>
+                        <option value="Jewelry Making">Jewelry Making</option>
+                        <option value="Textile Dyeing">Textile Dyeing</option>
+                        <option value="Embroidery">Embroidery</option>
+                        <option value="Leather Work">Leather Work</option>
+                        <option value="Other">Other (Please Specify)</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-6 mb-3" id="otherSkillDiv" style="display: none;">
+                    <label class="form-label">Specify Your Craft</label>
+                    <input type="text" class="form-control" name="other_skill" id="otherSkillInput" placeholder="E.g., Coir Rope Making, Palm Leaf Weaving">
+                </div>
             </div>
+            
             <div class="mb-3">
                 <label class="form-label">Location</label>
                 <input type="text" class="form-control" name="location" required>
@@ -57,6 +72,22 @@
             <a href="/" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
+
+    <script>
+    function toggleOtherSkill() {
+        var skillSelect = document.getElementById('skillSelect');
+        var otherDiv = document.getElementById('otherSkillDiv');
+        var otherInput = document.getElementById('otherSkillInput');
+        
+        if (skillSelect.value === 'Other') {
+            otherDiv.style.display = 'block';
+            otherInput.required = true;
+        } else {
+            otherDiv.style.display = 'none';
+            otherInput.required = false;
+            otherInput.value = '';
+        }
+    }
+    </script>
 </body>
 </html>
-

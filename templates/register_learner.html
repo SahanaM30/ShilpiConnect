@@ -25,18 +25,34 @@
                 <label class="form-label">Full Name</label>
                 <input type="text" class="form-control" name="name" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Craft You Want to Learn</label>
-                <select class="form-control" name="interest" required>
-                    <option value="">Select craft</option>
-                    <option value="Pottery">Pottery</option>
-                    <option value="Weaving">Weaving</option>
-                    <option value="Wood Carving">Wood Carving</option>
-                    <option value="Painting">Painting</option>
-                    <option value="Metal Work">Metal Work</option>
-                    <option value="Other">Other</option>
-                </select>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Craft You Want to Learn</label>
+                    <select class="form-control" name="interest" id="interestSelect" required onchange="toggleOtherInterest()">
+                        <option value="">Select craft</option>
+                        <option value="Pottery">Pottery</option>
+                        <option value="Weaving">Weaving</option>
+                        <option value="Wood Carving">Wood Carving</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Metal Work">Metal Work</option>
+                        <option value="Stone Carving">Stone Carving</option>
+                        <option value="Bamboo Craft">Bamboo Craft</option>
+                        <option value="Jewelry Making">Jewelry Making</option>
+                        <option value="Textile Dyeing">Textile Dyeing</option>
+                        <option value="Embroidery">Embroidery</option>
+                        <option value="Leather Work">Leather Work</option>
+                        <option value="Any">Open to Any Craft</option>
+                        <option value="Other">Other (Please Specify)</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-6 mb-3" id="otherInterestDiv" style="display: none;">
+                    <label class="form-label">Specify the Craft</label>
+                    <input type="text" class="form-control" name="other_interest" id="otherInterestInput" placeholder="E.g., Palm Leaf Weaving, Clay Toy Making">
+                </div>
             </div>
+            
             <div class="mb-3">
                 <label class="form-label">Your Location</label>
                 <input type="text" class="form-control" name="location" required>
@@ -49,5 +65,22 @@
             <a href="/" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
+
+    <script>
+    function toggleOtherInterest() {
+        var interestSelect = document.getElementById('interestSelect');
+        var otherDiv = document.getElementById('otherInterestDiv');
+        var otherInput = document.getElementById('otherInterestInput');
+        
+        if (interestSelect.value === 'Other') {
+            otherDiv.style.display = 'block';
+            otherInput.required = true;
+        } else {
+            otherDiv.style.display = 'none';
+            otherInput.required = false;
+            otherInput.value = '';
+        }
+    }
+    </script>
 </body>
 </html>
